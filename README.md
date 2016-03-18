@@ -14,7 +14,7 @@ iptables -t nat -A PREROUTING -p tcp -m set --match-set set_name dst -j REDIRECT
 
 Then run some application, that will listen on 8888 port:
 
-socat TCP-LISTEN:8888,reuseaddr,fork 
+socat TCP-LISTEN:8888,reuseaddr,fork -
 
 # op_generate.py
 will generate ipset within 1-65535 ports range and will exclude currently opened ports.
