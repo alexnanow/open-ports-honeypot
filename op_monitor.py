@@ -1,4 +1,5 @@
 #!/usr/bin/python
+#__author__ Alexander Korznikov @nopernik
 
 from subprocess import check_output
 import re
