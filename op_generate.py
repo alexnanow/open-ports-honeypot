@@ -1,4 +1,5 @@
 #!/usr/bin/python
+#__author__ Alexander Korznikov @nopernik
 
 import os
 import re
