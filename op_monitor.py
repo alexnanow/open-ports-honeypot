@@ -9,8 +9,9 @@ import os
 set_name = 'rports'
 
 def open_ports():
-   netstat = check_output('netstat -tan',shell=True)
-   lports = re.findall(r'(?<=\:)[0-9]{1,5}\w(?=.+listen)',netstat.lower())
+   pattern = r'(?<=\:)[0-9]{1,5}\w(?=.+listen)'
+   netstat = check_output(b'netstat -tan',shell=True)
+   lports = re.findall(pattern, str(netstat.lower()))
    lports = list(set(lports))
    return lports
 
