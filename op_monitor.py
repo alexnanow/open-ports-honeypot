@@ -23,11 +23,11 @@ while 1:
    new_closed = list(set(tmp_ports) - set(openports))
    if len(new_open):
      for port in new_open:
-       print '[-] Removing port %s from ipset' % port
+       print ('[-] Removing port %s from ipset' % port)
        os.system('ipset del %s %s' % (set_name,port))
    if len(new_closed):
      for port in new_closed:
-       print '[+] Adding port %s to ipset' % port
+       print ('[+] Adding port %s to ipset' % port)
        os.system('ipset add %s %s' % (set_name,port))
    tmp_ports = openports
    sleep(1)
