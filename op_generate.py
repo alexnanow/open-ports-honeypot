@@ -8,8 +8,9 @@ from subprocess import check_output
 set_name = 'rports'
 
 def open_ports():
-   netstat = check_output('netstat -tan',shell=True)
-   lports = re.findall(r'(?<=\:)[0-9]{1,5}\w(?=.+listen)',netstat.lower())
+   pattern = r'(?<=\:)[0-9]{1,5}\w(?=.+listen)'
+   netstat = check_output(b'netstat -tan',shell=True)
+   lports = re.findall(pattern, str(netstat.lower()))
    lports = list(set(lports))
    return lports
 
@@ -19,7 +20,7 @@ os.system('ipset add %s 0-65535' % set_name)
 
 openports = open_ports()
 for port in openports:
-   print '[+] Adding port %s to ipset' % port
+   print ('[+] Adding port %s to ipset' % port)
    os.system('ipset del %s %s' % (set_name,port))
 
 
